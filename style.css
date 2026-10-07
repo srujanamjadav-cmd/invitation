@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap');
+
+:root{
+  --ivory:#f7f1e6;
+  --cream:#fffaf1;
+  --maroon:#681d2a;
+  --gold:#b89558;
+  --dark:#30251f;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--dark);font-family:"Cormorant Garamond",serif}
+button{cursor:pointer;font:inherit}
+small{font:10px "DM Sans",sans-serif;letter-spacing:3px;color:var(--maroon)}
+
+#musicBtn{
+ position:fixed;right:15px;top:15px;z-index:200;
+ width:40px;height:40px;border-radius:50%;
+ border:1px solid var(--gold);background:#fffaf1cc;color:var(--maroon)
+}
+
+/* DOOR OPENING */
+#opening{
+ position:fixed;inset:0;z-index:100;background:#e9dfce;
+ transition:opacity 1s,visibility 1s;
+}
+#opening.hide{opacity:0;visibility:hidden;pointer-events:none}
+
+.doors{
+ position:absolute;inset:4vh auto 4vh;left:50%;transform:translateX(-50%);
+ width:min(94vw,560px);overflow:hidden;
+ border:8px solid #d1b982;border-radius:280px 280px 15px 15px;
+ box-shadow:0 25px 80px #48131d33;background:#eee2cf;
+ perspective:1200px;
+}
+.opening-couple{
+ position:absolute;width:100%;height:100%;object-fit:cover;
+ z-index:1;filter:saturate(.75)
+}
+.door{
+ position:absolute;top:0;bottom:0;width:50%;z-index:5;
+ background:linear-gradient(135deg,#fffaf0,#e6d8bf);
+ border:2px solid var(--gold);
+ transition:transform 1.8s cubic-bezier(.76,0,.24,1);
+}
+.door.left{left:0;transform-origin:left center}
+.door.right{right:0;transform-origin:right center}
+.doors.open .door.left{transform:rotateY(-105deg)}
+.doors.open .door.right{transform:rotateY(105deg)}
+.door:after{
+ content:"";position:absolute;inset:12%;border:1px solid var(--gold);
+ border-radius:150px 150px 10px 10px;
+}
+.door span{
+ position:absolute;z-index:2;top:25%;left:50%;transform:translateX(-50%);
+ color:var(--maroon);font-size:50px
+}
+.opening-text{
+ position:absolute;z-index:10;inset:0;display:grid;place-content:center;
+ text-align:center;padding:25px;color:var(--maroon);
+ transition:opacity .5s
+}
+.doors.open .opening-text{opacity:0}
+.om{font-size:40px;color:var(--gold)}
+.opening-text h1{
+ font:400 clamp(55px,12vw,85px) "Great Vibes";
+ margin:20px 0 5px
+}
+.opening-text h1 i{color:var(--gold);font-style:normal}
+.opening-text p{font-size:23px;font-style:italic}
+.opening-text button,#closing button{
+ background:var(--maroon);color:white;border:0;padding:14px 22px;
+ letter-spacing:2px;font:10px "DM Sans";margin:15px auto
+}
+
+/* MAIN */
+.hero{
+ min-height:100svh;position:relative;display:grid;place-items:center;overflow:hidden
+}
+.hero img,#closing>img{
+ position:absolute;width:100%;height:100%;object-fit:cover
+}
+.shade,.closing-shade{
+ position:absolute;inset:0;
+ background:linear-gradient(90deg,#f7f1e6ed,#f7f1e67a,#f7f1e6c7)
+}
+.hero-text{
+ position:relative;z-index:2;text-align:center;padding:25px
+}
+.hero-text h2{
+ font:400 clamp(60px,13vw,105px) "Great Vibes";
+ color:var(--maroon);margin:18px 0
+}
+.hero-text .and{font:30px "Great Vibes";color:var(--gold)}
+.hero-text p{font-size:23px;font-style:italic}
+
+.content,.events,.countdown{
+ padding:100px 22px;text-align:center;background:var(--ivory)
+}
+.content h2,.events h2,.countdown h2{
+ font:500 clamp(38px,8vw,65px) "Playfair Display";
+ color:var(--maroon);line-height:1.05
+}
+.content h2 em,.final h2 em{font:400 1em "Great Vibes"}
+.symbol{font-size:35px;color:var(--gold)}
+.content p{font-size:22px;line-height:1.7}
+blockquote{color:var(--maroon);font-size:20px;font-style:italic}
+
+.events{background:#eee4d4}
+.event{
+ max-width:600px;margin:25px auto;padding:30px;
+ border:1px solid #b8955880;background:#fffaf1;
+ display:flex;align-items:center;text-align:left;gap:25px
+}
+.event>span{
+ width:50px;height:50px;border:1px solid var(--gold);border-radius:50%;
+ display:grid;place-items:center;color:var(--maroon)
+}
+.event h3{font:500 30px "Playfair Display";color:var(--maroon);margin:8px 0}
+
+.venue{
+ padding:110px 20px;text-align:center;
+ background:linear-gradient(#f7f1e6e8,#f7f1e6f5),url("couple.png") center/cover fixed
+}
+.venue h2{font:500 clamp(32px,7vw,55px) "Playfair Display";color:var(--maroon)}
+.venue p{font-size:21px;line-height:1.5}
+.venue a{
+ display:inline-block;background:var(--maroon);color:white;text-decoration:none;
+ padding:14px 22px;font:10px "DM Sans";letter-spacing:2px
+}
+
+.countdown h2{font-size:35px}
+.timer{
+ max-width:650px;margin:35px auto;display:grid;grid-template-columns:repeat(4,1fr);
+ border-top:1px solid #681d2a33;border-bottom:1px solid #681d2a33
+}
+.timer div{padding:25px 5px;border-right:1px solid #681d2a22}
+.timer div:last-child{border:0}
+.timer b{display:block;font:500 clamp(30px,7vw,55px) "Playfair Display";color:var(--maroon)}
+.timer span{font:9px "DM Sans";letter-spacing:2px}
+
+/* CLOSING */
+#closing{
+ min-height:100svh;position:relative;display:grid;place-items:center;overflow:hidden
+}
+.closing-text{position:relative;z-index:5;text-align:center}
+.closing-text h2{
+ font:400 clamp(65px,14vw,110px) "Great Vibes";color:var(--maroon);margin:20px
+}
+.closing-text p{font-size:22px}
+.closing-door{
+ position:absolute;top:0;bottom:0;width:50%;z-index:10;
+ background:linear-gradient(135deg,#fffaf0,#e6d8bf);
+ border:2px solid var(--gold);
+ transition:transform 1.7s 1.7s cubic-bezier(.76,0,.24,1)
+}
+.closing-door.left{left:0;transform:translateX(-105%)}
+.closing-door.right{right:0;transform:translateX(105%)}
+#closing.animate .closing-door.left,#closing.animate .closing-door.right{transform:translateX(0)}
+#closing.animate .closing-text{opacity:0}
+.final{
+ position:absolute;z-index:20;inset:0;background:var(--ivory);
+ display:grid;place-content:center;text-align:center;padding:25px;
+ opacity:0;pointer-events:none;transition:opacity .7s 3.5s
+}
+#closing.done .final{opacity:1;pointer-events:auto}
+.final>div{font-size:40px;color:var(--gold)}
+.final h2{font:500 45px "Playfair Display";color:var(--maroon)}
+.final strong{
+ display:block;font:400 45px "Great Vibes";color:var(--maroon);margin:20px
+}
+.final button{
+ border:1px solid var(--maroon);background:transparent;color:var(--maroon);
+ padding:12px 20px;font:10px "DM Sans";letter-spacing:2px
+}
+
+@media(max-width:600px){
+ .doors{height:90svh;width:95vw}
+ .hero-text h2{font-size:65px}
+ .event{padding:22px}
+ .timer b{font-size:28px}
+ .timer span{font-size:7px;letter-spacing:1px}
+}
